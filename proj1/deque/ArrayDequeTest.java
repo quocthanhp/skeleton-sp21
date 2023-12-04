@@ -166,4 +166,40 @@ public class ArrayDequeTest {
         String itm = ad1.get(8);
         assertEquals("z", itm);
     }
+
+    @Test
+    public void iterateTest() {
+        ArrayDeque<String> ad1 = new ArrayDeque<>();
+
+        ad1.addLast("a");
+        ad1.addLast("b");
+        ad1.addFirst("c");
+        ad1.addLast("d");
+        ad1.addLast("e");
+        ad1.addFirst("f");
+        ad1.addLast("g");
+        ad1.addLast("h");
+        ad1.addLast("z");
+
+        for (String s : ad1) {
+            System.out.println(s);
+        }
+    }
+
+    @Test
+    public void equalityTest() {
+        ArrayDeque<String> ad1 = new ArrayDeque<>();
+
+        ad1.addLast("a");
+        ad1.addLast("b");
+        ad1.addFirst("c");
+
+        ArrayDeque<String> ad2 = new ArrayDeque<>();
+
+        ad2.addLast("a");
+        ad2.addLast("b");
+        ad2.addFirst("c");
+
+        assertTrue(ad1.equals(ad2));
+    }
 }

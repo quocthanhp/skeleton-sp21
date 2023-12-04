@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class ArrayDeque<T> implements Iterable<T> {
+public class ArrayDeque<T> implements Iterable<T>, Deque<T> {
     private T[] items;
     private int size;
     private int nextFirst;
@@ -17,6 +17,7 @@ public class ArrayDeque<T> implements Iterable<T> {
     }
 
     /** Adds an item to the front of the deque */
+    @Override
     public void addFirst(T item) {
         if (size == len) {
             resize(size * 2);
@@ -28,6 +29,7 @@ public class ArrayDeque<T> implements Iterable<T> {
     }
 
     /** Adds an item to the back of the deque */
+    @Override
     public void addLast(T item) {
         if (size == len) {
             resize(size * 2);
@@ -49,12 +51,8 @@ public class ArrayDeque<T> implements Iterable<T> {
         items = a;
     }
 
-    /** Returns true if deque is empty, false otherwise */
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
     /** Returns the number of items in the deque */
+    @Override
     public int size() {
         return size;
     }
@@ -62,6 +60,7 @@ public class ArrayDeque<T> implements Iterable<T> {
     /** Prints the items in the deque from first to last, separated by a space.
      * Once all the items have been printed, print out a new line
      */
+    @Override
     public void printDeque() {
         StringBuilder deque = new StringBuilder();
 
@@ -76,6 +75,7 @@ public class ArrayDeque<T> implements Iterable<T> {
     }
 
     /** Removes and returns the item at the front of the deque. If no such item exists, returns null */
+    @Override
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -93,6 +93,7 @@ public class ArrayDeque<T> implements Iterable<T> {
     }
 
     /** Removes and returns the item at the back of the deque. If no such item exists, returns null */
+    @Override
     public T removeLast() {
         if (size == 0) {
             return null;
@@ -110,6 +111,7 @@ public class ArrayDeque<T> implements Iterable<T> {
     /** Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
      * If no such item exists, returns null.
      */
+    @Override
     public T get(int index) {
         if (index < 0 || index >= size) {
             return null;

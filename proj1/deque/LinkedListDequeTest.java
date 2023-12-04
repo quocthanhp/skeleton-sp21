@@ -147,4 +147,34 @@ public class LinkedListDequeTest {
         String itm = lld1.get(6);
         assertNull(itm);
     }
+
+    @Test
+    public void iterateTest() {
+        LinkedListDeque<String> lld1 = new LinkedListDeque<>();
+        lld1.addFirst("is");
+        lld1.addLast("a");
+        lld1.addLast("string");
+        lld1.addFirst("This");
+
+        for (String s : lld1) {
+            System.out.println(s);
+        }
+    }
+
+    @Test
+    public void equalityTest() {
+        LinkedListDeque<String> lld1 = new LinkedListDeque<>();
+        lld1.addFirst("is");
+        lld1.addLast("a");
+        lld1.addLast("string");
+        lld1.addFirst("This");
+
+        LinkedListDeque<String> lld2 = new LinkedListDeque<>();
+        lld2.addFirst("is");
+        lld2.addLast("a");
+        lld2.addLast("string");
+        lld2.addFirst("This");
+
+        assertTrue(lld1.equals(lld2));
+    }
 }
