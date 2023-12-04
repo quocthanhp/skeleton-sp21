@@ -1,6 +1,8 @@
 package deque;
 
-public class LinkedListDeque<T> {
+import java.util.Iterator;
+
+public class LinkedListDeque<T> implements Iterable<T> {
     private static class Node<T> {
         public T item;
         public Node<T> next;
@@ -109,6 +111,59 @@ public class LinkedListDeque<T> {
         }
 
         return p.item;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new LinkedListIterator();
+    }
+
+    private class LinkedListIterator implements Iterator<T> {
+        int pos = 0;
+
+        @Override
+        public boolean hasNext() {
+            return pos < size;
+        }
+
+        @Override
+        public T next() {
+            T returnItem = get(pos);
+            pos++;
+            return returnItem;
+        }
+    }
+
+    private boolean contains(T item) {
+        for (T i : this) {
+            if (i.equals(item)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+
+        if (o instanceof LinkedListDeque lld) {
+            if (lld.size != this.size) {
+                return false;
+            }
+
+            // check that all of MY items are in the other list
+            for (T x : this) {
+                if (!lld.contains(x)) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        return false;
     }
 
 }
